@@ -15,4 +15,5 @@ public class WebDriverWaitUtil {
         WebElement element2 = wait2.until(ExpectedConditions.elementToBeClickable(By.xpath(waitingPage)));
         element2.click();
     }
+//    test
 }
