@@ -10,10 +10,11 @@ import java.time.Duration;
 
 public class WebDriverWaitUtil {
 
-    public static void waitThanClick(ChromeDriver driver, String waitingPage) {
-        WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofSeconds(9999999));
-        WebElement element2 = wait2.until(ExpectedConditions.elementToBeClickable(By.xpath(waitingPage)));
-        element2.click();
+    public static void waitAndClick(ChromeDriver driver, String waitingPage, Duration timeout) {
+        wait(driver, waitingPage, timeout).click();
     }
-//    test
+
+    public static WebElement wait(ChromeDriver driver, String waitingPage, Duration timeout) {
+        return new WebDriverWait(driver, timeout).until(ExpectedConditions.elementToBeClickable(By.xpath(waitingPage)));
+    }
 }
