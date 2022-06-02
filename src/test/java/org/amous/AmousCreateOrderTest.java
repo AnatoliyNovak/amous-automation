@@ -2,6 +2,7 @@ package org.amous;
 
 import org.amous.automation.CreateOrder;
 import org.amous.automation.LoginPage;
+import org.apache.commons.lang3.ObjectUtils;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -27,7 +28,7 @@ public class AmousCreateOrderTest {
         driver.get(HTTPS_AMOUS_TMS_CF_LOGIN_URL);
         LoginPage loginPage = new LoginPage();
         loginPage.login(driver);
-        Assert.assertTrue(true);
+        Assert.assertTrue(ObjectUtils.isNotEmpty(loginPage));
     }
 
     @Test(invocationCount = 2)

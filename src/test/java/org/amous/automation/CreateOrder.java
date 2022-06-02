@@ -1,14 +1,18 @@
 package org.amous.automation;
 
 import org.amous.utils.WebDriverUtil;
+import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
 import java.time.Duration;
+import java.util.List;
 
 public class CreateOrder {
     public final String CREATE_ORDER_CLICK = "/html/body/div[@id='amous-frontend-app']/div[@id='app-container']/div[@class='css-RootWrapper-o71dww3 css-1urznz1']/div/div/div[@class='css-LayoutsWrapper-o71dww4 css-1t81cfi']/div[@class='css-Box-17642400 css-cx3vhc']/div[@class='css-MenuWrapper-1cou8p27 css-8079i2']/div[@class='css-Box-17642400 css-ctro3b']/div[@class='css-Wrapper-ikgouz0 css-17jic38'][2]/div[@class='css-NavItem-1cou8p20 css-xoho6r']";
@@ -26,10 +30,12 @@ public class CreateOrder {
     public final String SPECIALINSTRUCTIONS = "//*[@id=\"specialInstructions\"]";
     public final String REFERENCES = "//*[@id=\"references.0.value\"]";
     public final String PRICEING = "//*[@id=\"app-container\"]/div/div/div/div[2]/div/div[1]/div[2]/div[1]/form/div[1]/div[1]/div[5]";
-    public final String CUSTOMERRATE = "//*[@id=\"app-container\"]/div/div/div/div[2]/div/div[1]/div[2]/div[1]/div/form/div[3]/div/div[6]/div/div[2]/div[1]/div[2]/div[1]/input";
+    public final String CUSTOMERRATE = "//*[@id=\"app-container\"]/div/div/div/div[2]/div/div[1]/div[2]/div[1]/div/form/div[2]/div[2]/div[1]";
+    public final String RATE = "//*[@id=\"app-container\"]/div/div/div/div[1]/div[2]/div/div[2]/div/div/div/div[2]/div/div/div[2]/div[1]/div/div/div/div/input";
     public final String SUBMIT = "//*[@id=\"app-container\"]/div/div/div/div[2]/div/div[2]/div/div[2]/button[3]";
-    public final String TOTALDISTANCE = "//*[@id=\"totalTripDistance\"]";
+    //  public final String TOTALDISTANCE = "//*[@id=\"totalTripDistance\"]";
     public final String ORDER = "//*[@id=\"app-container\"]/div/div/div/div[2]/div/div/div[2]/div[5]/div/div/div/div[2]/div[3]/div/div/div";
+
     public void createOrder(ChromeDriver driver) {
         WebElement createOrder = driver.findElement(By.xpath(CREATE_ORDER_CLICK));
         ((JavascriptExecutor) driver).executeScript("arguments[0].click()", createOrder);
@@ -57,14 +63,19 @@ public class CreateOrder {
         WebElement pricing = driver.findElement(By.xpath(PRICEING));
         ((JavascriptExecutor) driver).executeScript("arguments[0].click()", pricing);
 
-        WebDriverUtil.waitAndClick(driver, TOTALDISTANCE, Duration.ofSeconds(9999999));
-        driver.findElement(By.xpath(CUSTOMERRATE)).sendKeys("1000");
+        WebElement customerRate = driver.findElement(By.xpath(CUSTOMERRATE));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click()", customerRate);
+
+        WebElement clickable = driver.findElement(By.xpath(RATE));
+        new Actions(driver)
+                .click(clickable)
+                .perform();
 
         WebElement btnSubmit = driver.findElement(By.xpath(SUBMIT));
         ((JavascriptExecutor) driver).executeScript("arguments[0].click()", btnSubmit);
         WebDriverUtil.wait(driver, ORDER, Duration.ofSeconds(9999999));
 
-        Assert.assertTrue(true);
+        Assert.assertTrue(ObjectUtils.isNotEmpty(btnSubmit));
     }
 
 }
