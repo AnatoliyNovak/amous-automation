@@ -29,6 +29,8 @@ public class CreateOrder {
     public final String CUSTOMERRATE = "//*[@id=\"app-container\"]/div/div/div/div[2]/div/div[1]/div[2]/div[1]/div/form/div[3]/div/div[6]/div/div[2]/div[1]/div[2]/div[1]/input";
     public final String SUBMIT = "//*[@id=\"app-container\"]/div/div/div/div[2]/div/div[2]/div/div[2]/button[3]";
     public final String TOTALDISTANCE = "//*[@id=\"totalTripDistance\"]";
+
+    public final String ORDER = "//*[@id=\"app-container\"]/div/div/div/div[2]/div/div/div[2]/div[5]/div/div/div/div[2]/div[3]/div/div/div";
     public void createOrder(ChromeDriver driver) {
         WebElement createOrder = driver.findElement(By.xpath(CREATE_ORDER_CLICK));
         ((JavascriptExecutor) driver).executeScript("arguments[0].click()", createOrder);
@@ -61,7 +63,7 @@ public class CreateOrder {
 
         WebElement btnSubmit = driver.findElement(By.xpath(SUBMIT));
         ((JavascriptExecutor) driver).executeScript("arguments[0].click()", btnSubmit);
-
+        WebDriverUtil.wait(driver, ORDER, Duration.ofSeconds(9999999));
 
         Assert.assertTrue(true);
     }

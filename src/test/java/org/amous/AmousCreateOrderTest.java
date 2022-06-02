@@ -7,6 +7,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -16,7 +17,7 @@ public class AmousCreateOrderTest {
     public static final String HTTPS_AMOUS_TMS_CF_LOGIN_URL = "https://amoustms.cf/login";
     public static ChromeDriver driver;
 
-    @BeforeMethod
+    @BeforeClass
     public void loginAndSetUp() {
         System.setProperty("webdriver.chrome.driver", CHROME_DRIVER_PATH);
         ChromeOptions options = new ChromeOptions();
@@ -29,13 +30,18 @@ public class AmousCreateOrderTest {
         Assert.assertTrue(true);
     }
 
-    @Test
+    @Test(invocationCount = 2)
     public void createOrderTest() {
         CreateOrder createOrder = new CreateOrder();
         createOrder.createOrder(driver);
     }
-    //   @AfterClass
-    //  public static void afterTests() {
-    //     driver.quit();
-    // }
+  //  @Test ()
+  //  public void createDriver() {
+  //  }
+
+    @AfterClass
+    public static void afterTests() {
+        driver.quit();
+    }
+
 }

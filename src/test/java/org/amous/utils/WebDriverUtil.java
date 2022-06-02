@@ -22,5 +22,7 @@ public class WebDriverUtil {
     public static void select(ChromeDriver driver, String xpath, int index) {
         Select se = new Select(driver.findElement(By.xpath(xpath)));
         se.selectByIndex(index);
+
+
     }
 }
