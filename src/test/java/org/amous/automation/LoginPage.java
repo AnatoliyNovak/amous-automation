@@ -1,6 +1,6 @@
 package org.amous.automation;
 
-import org.amous.utils.WebDriverWaitUtil;
+import org.amous.utils.WebDriverUtil;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -14,12 +14,12 @@ public class LoginPage {
     public static final String LOGIN_PAGE = "//*[@id=\"username\"]";
 
     public void login(ChromeDriver driver) {
-        WebElement webElement = WebDriverWaitUtil.wait(driver, LOGIN_PAGE, Duration.ofSeconds(15));
+        WebElement webElement = WebDriverUtil.wait(driver, LOGIN_PAGE, Duration.ofSeconds(15));
         webElement.sendKeys("NLC");
         driver.findElement(By.id("password")).clear();
         driver.findElement(By.id("password")).sendKeys("1234");
         driver.findElement(By.xpath(SING_IN)).click();
-        WebDriverWaitUtil.waitAndClick(driver, DISPATCH_BOARD_PAGE, Duration.ofSeconds(9999999));
+        WebDriverUtil.waitAndClick(driver, DISPATCH_BOARD_PAGE, Duration.ofSeconds(9999999));
     }
 
 }
