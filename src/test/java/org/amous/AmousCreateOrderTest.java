@@ -6,6 +6,7 @@ import org.openqa.selenium.Dimension;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -33,4 +34,8 @@ public class AmousCreateOrderTest {
         CreateOrder createOrder = new CreateOrder();
         createOrder.createOrder(driver);
     }
+    //   @AfterClass
+    //  public static void afterTests() {
+    //     driver.quit();
+    // }
 }
