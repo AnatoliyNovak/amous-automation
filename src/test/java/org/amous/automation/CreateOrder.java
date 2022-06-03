@@ -10,7 +10,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 
 import java.time.Duration;
-import java.util.concurrent.TimeUnit;
+
 
 public class CreateOrder {
     public final String CREATE_ORDER_CLICK = "/html/body/div/div/div/div/div/div[1]/div/div[1]/div[1]/div[3]/div";
@@ -32,57 +32,66 @@ public class CreateOrder {
     public final String SUBMIT = "//*[@id=\"app-container\"]/div/div/div/div[2]/div/div[2]/div/div[2]/button[3]";
     public final String ORDER = "//*[@id=\"app-container\"]/div/div/div/div[2]/div/div/div[2]/div[5]/div/div/div/div[2]/div[3]/div/div/div";
     public final String SELECTCUSTOMER = "//*[@id=\"app-container\"]/div/div/div/div[2]/div/div[1]/div[1]/div[2]/div[1]/div/div[1]/div[2]/div/div";
+    public final String ORDERTYPE = "//*[@id=\"react-select-5--value\"]/div[2]";
+    public final String NUMBEROFLOADS = "//*[@id=\"app-container\"]/div/div/div/div[2]/div/div[2]/div/div[1]/input";
+    public final String SAVEANDDUPLICATE = "//*[@id=\"app-container\"]/div/div/div/div[2]/div/div[2]/div/div[2]/button[2]";
+    public final String TRIPPRISING = "/html/body/div[1]/div/div/div/div/div[2]/div/div[1]/div[3]/div[1]/div/div[1]/div[1]/div[6]";
+    public final String REMOVECARRIERRATE = "//*[@id=\"app-container\"]/div/div/div/div[2]/div/div[1]/div[3]/div[1]/div/div[2]/div/div[1]/button[3]";
 
     public void createOrder(ChromeDriver driver) {
 
         WebElement createOrder = driver.findElement(By.xpath(CREATE_ORDER_CLICK));
         ((JavascriptExecutor) driver).executeScript("arguments[0].click()", createOrder);
-
         WebDriverUtil.wait(driver, SELECTCUSTOMER, Duration.ofSeconds(1000));
-        WebElement clickable = driver.findElement(By.xpath(SELECTCUSTOMER));
-        new Actions(driver).moveToElement(clickable)
+        WebElement selectCustomerClick = driver.findElement(By.xpath(SELECTCUSTOMER));
+        new Actions(driver).moveToElement(selectCustomerClick)
                 .click()
                 .sendKeys("Warner Bros\n")
                 .perform();
-
-        WebElement billTo = driver.findElement(By.xpath(BILLTO));
         WebDriverUtil.action(driver, BILLTO);
+        WebElement billTo = driver.findElement(By.xpath(BILLTO));
         ((JavascriptExecutor) driver).executeScript("arguments[0].click()", billTo);
         WebDriverUtil.waitAndClick(driver, PICKUP_PAGE, Duration.ofSeconds(9999999));
-
-
         WebElement pickup = driver.findElement(By.xpath(PICKUP));
         ((JavascriptExecutor) driver).executeScript("arguments[0].click()", pickup);
         WebDriverUtil.waitAndClick(driver, PICKUP_PAGE, Duration.ofSeconds(9999999));
-
         driver.findElement(By.xpath(ITEMSID)).sendKeys("AutomationBox");
         driver.findElement(By.xpath(WEIGHT)).sendKeys("1000");
         driver.findElement(By.xpath(QUANTITY)).sendKeys("3");
         WebDriverUtil.select(driver, QOM, 3);
         WebDriverUtil.select(driver, FREIGHTCKASS, 3);
-
         WebElement drop = driver.findElement(By.xpath(DROP));
         ((JavascriptExecutor) driver).executeScript("arguments[0].click()", drop);
-
         WebElement additionalInfo = driver.findElement(By.xpath(ADDITIONALINFO));
         ((JavascriptExecutor) driver).executeScript("arguments[0].click()", additionalInfo);
-
         driver.findElement(By.xpath(SPECIALINSTRUCTIONS)).sendKeys("This is my first automation test. Don't judge too hard");
         driver.findElement(By.xpath(REFERENCES)).sendKeys("777");
-
+        WebDriverUtil.wait(driver, ORDERTYPE, Duration.ofSeconds(1000));
+        WebElement selectOrderType = driver.findElement(By.xpath(ORDERTYPE));
+        new Actions(driver).moveToElement(selectOrderType)
+                .click()
+                .sendKeys("Variant6\n")
+                .perform();
         WebElement pricing = driver.findElement(By.xpath(PRICEING));
         ((JavascriptExecutor) driver).executeScript("arguments[0].click()", pricing);
-
         WebElement customerRate = driver.findElement(By.xpath(CUSTOMERRATE));
         ((JavascriptExecutor) driver).executeScript("arguments[0].click()", customerRate);
-
         WebDriverUtil.wait(driver, RATE, Duration.ofSeconds(1000));
         WebDriverUtil.action(driver, RATE);
+        driver.findElement(By.xpath(NUMBEROFLOADS)).clear();
+        driver.findElement(By.xpath(NUMBEROFLOADS)).sendKeys("2");
+        WebElement saveAndDuplacate = driver.findElement(By.xpath(SAVEANDDUPLICATE));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click()", saveAndDuplacate);
+
+//        WebDriverUtil.wait(driver, PICKUP_PAGE, Duration.ofSeconds(20));
+//        WebElement tripPrising = driver.findElement(By.xpath(TRIPPRISING));
+//        ((JavascriptExecutor) driver).executeScript("arguments[0].click()", tripPrising);
+//        WebElement removeCarrierRate = driver.findElement(By.xpath(REMOVECARRIERRATE));
+//        ((JavascriptExecutor) driver).executeScript("arguments[0].click()", removeCarrierRate);
 
         WebElement btnSubmit = driver.findElement(By.xpath(SUBMIT));
         ((JavascriptExecutor) driver).executeScript("arguments[0].click()", btnSubmit);
-        WebDriverUtil.wait(driver, ORDER, Duration.ofSeconds(9999999));
-
+        WebDriverUtil.wait(driver, ORDER, Duration.ofSeconds(20));
         Assert.assertTrue(ObjectUtils.isNotEmpty(btnSubmit));
     }
 
