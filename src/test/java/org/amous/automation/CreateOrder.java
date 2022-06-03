@@ -72,7 +72,7 @@ public class CreateOrder {
         ((JavascriptExecutor) driver).executeScript("arguments[0].click()", btnSubmit);
         WebDriverUtil.wait(driver, ORDER, Duration.ofSeconds(9999999));
 
-        Assert.assertTrue(ObjectUtils.isNotEmpty(btnSubmit);
+        Assert.assertTrue(ObjectUtils.isNotEmpty(btnSubmit));
     }
 
 }
