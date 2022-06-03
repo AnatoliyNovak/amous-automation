@@ -13,7 +13,7 @@ import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 public class CreateOrder {
-    public final String CREATE_ORDER_CLICK = "/html/body/div[@id='amous-frontend-app']/div[@id='app-container']/div[@class='css-RootWrapper-o71dww3 css-1urznz1']/div/div/div[@class='css-LayoutsWrapper-o71dww4 css-1t81cfi']/div[@class='css-Box-17642400 css-cx3vhc']/div[@class='css-MenuWrapper-1cou8p27 css-8079i2']/div[@class='css-Box-17642400 css-ctro3b']/div[@class='css-Wrapper-ikgouz0 css-17jic38'][2]/div[@class='css-NavItem-1cou8p20 css-xoho6r']";
+    public final String CREATE_ORDER_CLICK = "/html/body/div/div/div/div/div/div[1]/div/div[1]/div[1]/div[3]/div";
     public final String PICKUP = "//*[@id=\"app-container\"]/div/div/div/div[2]/div/div[1]/div[2]/div[1]/form/div[1]/div[1]/div[2]";
     public final String PICKUP_PAGE = "//*[@id=\"app-container\"]/div/div/div/div[2]/div";
     public final String ITEMSID = "//*[@id=\"items.0.itemId\"]";
@@ -31,11 +31,25 @@ public class CreateOrder {
     public final String RATE = "//*[@id=\"app-container\"]/div/div/div/div[1]/div[2]/div/div[2]/div/div/div/div[2]/div/div/div[2]/div[1]/div/div/div/div/input";
     public final String SUBMIT = "//*[@id=\"app-container\"]/div/div/div/div[2]/div/div[2]/div/div[2]/button[3]";
     public final String ORDER = "//*[@id=\"app-container\"]/div/div/div/div[2]/div/div/div[2]/div[5]/div/div/div/div[2]/div[3]/div/div/div";
+    public final String SELECTCUSTOMER = "//*[@id=\"app-container\"]/div/div/div/div[2]/div/div[1]/div[1]/div[2]/div[1]/div/div[1]/div[2]/div/div";
 
     public void createOrder(ChromeDriver driver) {
+
         WebElement createOrder = driver.findElement(By.xpath(CREATE_ORDER_CLICK));
         ((JavascriptExecutor) driver).executeScript("arguments[0].click()", createOrder);
-        WebDriverUtil.waitAndClick(driver, BILLTO, Duration.ofSeconds(9999999));
+
+        WebDriverUtil.wait(driver, SELECTCUSTOMER, Duration.ofSeconds(1000));
+        WebElement clickable = driver.findElement(By.xpath(SELECTCUSTOMER));
+        new Actions(driver).moveToElement(clickable)
+                .click()
+                .sendKeys("Warner Bros\n")
+                .perform();
+
+        WebElement billTo = driver.findElement(By.xpath(BILLTO));
+        WebDriverUtil.action(driver, BILLTO);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click()", billTo);
+        WebDriverUtil.waitAndClick(driver, PICKUP_PAGE, Duration.ofSeconds(9999999));
+
 
         WebElement pickup = driver.findElement(By.xpath(PICKUP));
         ((JavascriptExecutor) driver).executeScript("arguments[0].click()", pickup);
@@ -63,10 +77,7 @@ public class CreateOrder {
         ((JavascriptExecutor) driver).executeScript("arguments[0].click()", customerRate);
 
         WebDriverUtil.wait(driver, RATE, Duration.ofSeconds(1000));
-        WebElement clickable = driver.findElement(By.xpath(RATE));
-        new Actions(driver)
-                .click(clickable)
-                .perform();
+        WebDriverUtil.action(driver, RATE);
 
         WebElement btnSubmit = driver.findElement(By.xpath(SUBMIT));
         ((JavascriptExecutor) driver).executeScript("arguments[0].click()", btnSubmit);

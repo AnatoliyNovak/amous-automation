@@ -30,7 +30,7 @@ public class AmousCreateOrderTest {
         Assert.assertTrue(ObjectUtils.isNotEmpty(loginPage));
     }
 
-    @Test(invocationCount = 2)
+    @Test(invocationCount = 1)
     public void createOrderTest() throws InterruptedException {
         CreateOrder createOrder = new CreateOrder();
         createOrder.createOrder(driver);
@@ -39,9 +39,9 @@ public class AmousCreateOrderTest {
   //  public void createDriver() {
   //  }
 
-    @AfterClass
-    public static void afterTests() {
-        driver.quit();
-    }
+//    @AfterClass
+//    public static void afterTests() {
+//        driver.quit();
+//    }
 
 }

@@ -15,7 +15,7 @@ public class LoginPage {
 
     public void login(ChromeDriver driver) {
         WebElement webElement = WebDriverUtil.wait(driver, LOGIN_PAGE, Duration.ofSeconds(15));
-        webElement.sendKeys("NLC");
+        webElement.sendKeys("Cinema");
         driver.findElement(By.id("password")).clear();
         driver.findElement(By.id("password")).sendKeys("1234");
         driver.findElement(By.xpath(SING_IN)).click();
