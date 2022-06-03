@@ -9,7 +9,6 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class AmousCreateOrderTest {
@@ -32,7 +31,7 @@ public class AmousCreateOrderTest {
     }
 
     @Test(invocationCount = 2)
-    public void createOrderTest() {
+    public void createOrderTest() throws InterruptedException {
         CreateOrder createOrder = new CreateOrder();
         createOrder.createOrder(driver);
     }
