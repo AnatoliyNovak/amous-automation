@@ -35,8 +35,11 @@ public class CreateOrder {
     public final String ORDERTYPE = "//*[@id=\"react-select-5--value\"]/div[2]";
     public final String NUMBEROFLOADS = "//*[@id=\"app-container\"]/div/div/div/div[2]/div/div[2]/div/div[1]/input";
     public final String SAVEANDDUPLICATE = "//*[@id=\"app-container\"]/div/div/div/div[2]/div/div[2]/div/div[2]/button[2]";
-    public final String TRIPPRISING = "/html/body/div[1]/div/div/div/div/div[2]/div/div[1]/div[3]/div[1]/div/div[1]/div[1]/div[6]";
-    public final String REMOVECARRIERRATE = "//*[@id=\"app-container\"]/div/div/div/div[2]/div/div[1]/div[3]/div[1]/div/div[2]/div/div[1]/button[3]";
+    public final String CUSTOMERCONTACTNAME = "//*[@id=\"contactName\"]";
+    public final String CUSTOMERCONTACTPHONE = "//*[@id=\"app-container\"]/div/div/div/div[2]/div/div[1]/div[2]/div[1]/div/form/div[3]/div/div[5]/div[2]/div[2]/div/div/input";
+    public final String CUSTOMERCONTACTEMAIL = "//*[@id=\"email\"]";
+    public final String CUSTOMERCOMMENTARS = "//*[@id=\"comments\"]";
+    public final String CURRENCY = "//*[@id=\"currency\"]";
 
     public void createOrder(ChromeDriver driver) {
 
@@ -58,7 +61,7 @@ public class CreateOrder {
         driver.findElement(By.xpath(ITEMSID)).sendKeys("AutomationBox");
         driver.findElement(By.xpath(WEIGHT)).sendKeys("1000");
         driver.findElement(By.xpath(QUANTITY)).sendKeys("3");
-        WebDriverUtil.select(driver, QOM, 3);
+        WebDriverUtil.select(driver, QOM, 12);
         WebDriverUtil.select(driver, FREIGHTCKASS, 3);
         WebElement drop = driver.findElement(By.xpath(DROP));
         ((JavascriptExecutor) driver).executeScript("arguments[0].click()", drop);
@@ -82,13 +85,11 @@ public class CreateOrder {
         driver.findElement(By.xpath(NUMBEROFLOADS)).sendKeys("2");
         WebElement saveAndDuplacate = driver.findElement(By.xpath(SAVEANDDUPLICATE));
         ((JavascriptExecutor) driver).executeScript("arguments[0].click()", saveAndDuplacate);
-
-//        WebDriverUtil.wait(driver, PICKUP_PAGE, Duration.ofSeconds(20));
-//        WebElement tripPrising = driver.findElement(By.xpath(TRIPPRISING));
-//        ((JavascriptExecutor) driver).executeScript("arguments[0].click()", tripPrising);
-//        WebElement removeCarrierRate = driver.findElement(By.xpath(REMOVECARRIERRATE));
-//        ((JavascriptExecutor) driver).executeScript("arguments[0].click()", removeCarrierRate);
-
+        WebDriverUtil.select(driver, CURRENCY, 3);
+        driver.findElement(By.xpath(CUSTOMERCONTACTNAME)).sendKeys("Contact Name");
+        driver.findElement(By.xpath(CUSTOMERCONTACTPHONE)).sendKeys("3333333333");
+        driver.findElement(By.xpath(CUSTOMERCONTACTEMAIL)).sendKeys("ContactName@YEP.com");
+        driver.findElement(By.xpath(CUSTOMERCOMMENTARS)).sendKeys("I am waiting for trip pricing");
         WebElement btnSubmit = driver.findElement(By.xpath(SUBMIT));
         ((JavascriptExecutor) driver).executeScript("arguments[0].click()", btnSubmit);
         WebDriverUtil.wait(driver, ORDER, Duration.ofSeconds(20));

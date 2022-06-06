@@ -31,7 +31,7 @@ public class AmousCreateOrderTest {
     }
 
     @Test(invocationCount = 2)
-    public void createOrderTest() throws InterruptedException {
+    public void createOrderTest() {
         CreateOrder createOrder = new CreateOrder();
         createOrder.createOrder(driver);
     }
