@@ -1,5 +1,6 @@
 package org.amous;
 
+import org.amous.automation.CreateDriver;
 import org.amous.automation.CreateOrder;
 import org.amous.automation.LoginPage;
 import org.apache.commons.lang3.ObjectUtils;
@@ -30,18 +31,21 @@ public class AmousCreateOrderTest {
         Assert.assertTrue(ObjectUtils.isNotEmpty(loginPage));
     }
 
-    @Test(invocationCount = 2)
-    public void createOrderTest() {
-        CreateOrder createOrder = new CreateOrder();
-        createOrder.createOrder(driver);
-    }
-  //  @Test ()
-  //  public void createDriver() {
-  //  }
+//    @Test(invocationCount = 2)
+//    public void createOrderTest() {
+//        CreateOrder createOrder = new CreateOrder();
+//        createOrder.createOrder(driver);
+//    }
+    @Test ()
+    public void createDriverTest() {
+        CreateDriver createDriver =new CreateDriver();
+        createDriver.createDriver(driver);
 
-    @AfterClass
-    public static void afterTests() {
-        driver.quit();
     }
+
+//    @AfterClass
+//    public static void afterTests() {
+//        driver.quit();
+//    }
 
 }

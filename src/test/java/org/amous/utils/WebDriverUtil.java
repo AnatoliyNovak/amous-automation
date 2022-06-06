@@ -15,13 +15,16 @@ public class WebDriverUtil {
     public static void waitAndClick(ChromeDriver driver, String waitingPage, Duration timeout) {
         wait(driver, waitingPage, timeout).click();
     }
+
     public static WebElement wait(ChromeDriver driver, String waitingPage, Duration timeout) {
         return new WebDriverWait(driver, timeout).until(ExpectedConditions.elementToBeClickable(By.xpath(waitingPage)));
     }
+
     public static void select(ChromeDriver driver, String xpath, int index) {
         Select se = new Select(driver.findElement(By.xpath(xpath)));
         se.selectByIndex(index);
     }
+
     public static void action(ChromeDriver driver, String xpath) {
         WebElement clickable = wait(driver, xpath, Duration.ofSeconds(100));
         new Actions(driver)
