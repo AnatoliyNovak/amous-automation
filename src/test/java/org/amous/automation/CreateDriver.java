@@ -25,6 +25,8 @@ public class CreateDriver {
     public final String EMAIL = "//*[@id=\"email\"]";
     public final String SELECTPERMISSIONS = "//*[@id=\"app-container\"]/div/div/div/div[1]/div[2]/div/div[2]/div[2]/form/section/div[6]/div[2]/div";
     public final String SUBMIT = "//*[@id=\"app-container\"]/div/div/div/div[1]/div[2]/div/div[2]/div[2]/form/div/button[2]";
+    public final String DRIVERINFOPAGE = "//*[@id=\"app-container\"]/div/div/div/div[2]/div";
+    public final String SAVE = "/html/body/div[@id='amous-frontend-app']/div[@id='app-container']/div[@class='css-RootWrapper-o71dww3 css-1urznz1']/div/div/div[@class='css-PageWrapper-o71dww5 css-ListWrapper-o71dww6 css-5qp2sn']/div[@class='css-DriverWrapper-jddpo87 css-EditDriverWrapper-jddpo88 css-ern2f']/div[@class='css-TabFormWrapper-7dl7yd6 css-14mesnc']/form[@class='css-Form-7dl7yd0 css-b88fp5']/div[@class='css-Box-17642400 css-Flex-17642401 css-qnza94']/div[@class='css-Box-17642400 css-cx3vhc'][2]/button[@class='css-Button-pmfjy10 css-FormSaveButton-pmfjy17 css-iv67yt']";
 
     public void createDriver(ChromeDriver driver) {
 
@@ -37,9 +39,9 @@ public class CreateDriver {
         ((JavascriptExecutor) driver).executeScript("arguments[0].click()", addDriver);
         WebElement newAddDriver = driver.findElement(By.xpath(ADDNEWDRIVER));
         ((JavascriptExecutor) driver).executeScript("arguments[0].click()", newAddDriver);
-        driver.findElement(By.xpath(FIRSTNAME)).sendKeys("Driver" + new Random().nextInt(2000));
-        driver.findElement(By.xpath(LASTNAME)).sendKeys("Automation" + new Random().nextInt(2000));
-        driver.findElement(By.xpath(LOGINID)).sendKeys("LoginId" + new Random().nextInt(2000));
+        driver.findElement(By.xpath(FIRSTNAME)).sendKeys("Driver" + new Random().nextInt(9999));
+        driver.findElement(By.xpath(LASTNAME)).sendKeys("Automation" + new Random().nextInt(9999));
+        driver.findElement(By.xpath(LOGINID)).sendKeys("LoginId" + new Random().nextInt(9999));
         driver.findElement(By.xpath(PASSWORD)).sendKeys("1234");
         driver.findElement(By.xpath(EMAIL)).sendKeys("emaol" + new Random().nextInt(200) + "@gmail.com");
         WebElement selectCustomerClick = driver.findElement(By.xpath(SELECTPERMISSIONS));
@@ -49,6 +51,10 @@ public class CreateDriver {
                 .perform();
         WebElement btnSubmit = driver.findElement(By.xpath(SUBMIT));
         ((JavascriptExecutor) driver).executeScript("arguments[0].click()", btnSubmit);
-        Assert.assertTrue(ObjectUtils.isNotEmpty(btnSubmit));
+        WebDriverUtil.wait(driver, DRIVERINFOPAGE, Duration.ofSeconds(2000));
+        WebElement btnSave = driver.findElement(By.xpath(SAVE));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click()", btnSave);
+        WebDriverUtil.wait(driver, FLEETDRIVERPAGE, Duration.ofSeconds(2000));
+       Assert.assertTrue(true);
     }
 }

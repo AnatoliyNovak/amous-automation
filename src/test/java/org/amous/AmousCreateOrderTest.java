@@ -2,6 +2,7 @@ package org.amous;
 
 import org.amous.automation.CreateDriver;
 import org.amous.automation.CreateOrder;
+import org.amous.automation.CreateTruck;
 import org.amous.automation.LoginPage;
 import org.apache.commons.lang3.ObjectUtils;
 import org.openqa.selenium.Dimension;
@@ -31,15 +32,22 @@ public class AmousCreateOrderTest {
         Assert.assertTrue(ObjectUtils.isNotEmpty(loginPage));
     }
 
-//    @Test(invocationCount = 2)
-//    public void createOrderTest() {
-//        CreateOrder createOrder = new CreateOrder();
-//        createOrder.createOrder(driver);
-//    }
-    @Test ()
+        @Test(priority = 0)
+    public void createOrderTest() {
+        CreateOrder createOrder = new CreateOrder();
+        createOrder.createOrder(driver);
+    }
+    @Test(priority = 2)
     public void createDriverTest() {
-        CreateDriver createDriver =new CreateDriver();
+        CreateDriver createDriver = new CreateDriver();
         createDriver.createDriver(driver);
+
+    }
+
+    @Test(priority = 1)
+    public void createTruckTest() {
+        CreateTruck createTruck = new CreateTruck();
+        createTruck.createTruck(driver);
 
     }
 
