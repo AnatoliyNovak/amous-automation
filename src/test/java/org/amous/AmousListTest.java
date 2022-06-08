@@ -13,7 +13,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class AmousCreateOrderTest {
+public class AmousListTest {
 
     public static final String CHROME_DRIVER_PATH = "C:\\Drivers\\chromedriver.exe";
     public static final String HTTPS_AMOUS_TMS_CF_LOGIN_URL = "https://amoustms.cf/login";
@@ -32,18 +32,17 @@ public class AmousCreateOrderTest {
         Assert.assertTrue(ObjectUtils.isNotEmpty(loginPage));
     }
 
-        @Test(priority = 0)
-    public void createOrderTest() {
-        CreateOrder createOrder = new CreateOrder();
-        createOrder.createOrder(driver);
-    }
-    @Test(priority = 2)
-    public void createDriverTest() {
-        CreateDriver createDriver = new CreateDriver();
-        createDriver.createDriver(driver);
-
-    }
-
+    //        @Test(priority = 0)
+//    public void createOrderTest() {
+//        CreateOrder createOrder = new CreateOrder();
+//        createOrder.createOrder(driver);
+//    }
+//    @Test(priority = 2 )
+//    public void createDriverTest() {
+//        CreateDriver createDriver = new CreateDriver();
+//        createDriver.createDriver(driver);
+//
+//    }
     @Test(priority = 1)
     public void createTruckTest() {
         CreateTruck createTruck = new CreateTruck();

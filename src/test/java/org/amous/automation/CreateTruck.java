@@ -19,6 +19,8 @@ public class CreateTruck {
     public final String TRUCKID = "//*[@id=\"unitId\"]";
     public final String TRUCKTYPE = "//*[@id=\"truckType\"]";
     public final String SUBMIT = "//*[@id=\"app-container\"]/div/div/div/div[1]/div[2]/div/div[2]/div[2]/div/form/div/button[2]";
+    public final String SERIALNUMBER = "//*[@id=\"app-container\"]/div/div/div/div[2]/div/div[3]/form/section[1]/div[5]/input";
+    public final String VINLOOKUP = "//*[@id=\"app-container\"]/div/div/div/div[2]/div/div[3]/form/section[1]/div[5]/label/button";
     public final String UPDATE = "//*[@id=\"app-container\"]/div/div/div/div[2]/div/div[3]/form/div/div[2]/button[2]";
 
     public void createTruck(ChromeDriver driver) {
@@ -29,12 +31,14 @@ public class CreateTruck {
         ((JavascriptExecutor) driver).executeScript("arguments[0].click()", treeDots);
         WebElement createNewTruck = driver.findElement(By.xpath(CREATENEWTRUCK));
         ((JavascriptExecutor) driver).executeScript("arguments[0].click()", createNewTruck);
-        driver.findElement(By.xpath(TRUCKID)).sendKeys("Truck_A" + new Random().nextInt(200));
+        driver.findElement(By.xpath(TRUCKID)).sendKeys("Truck_A" + new Random().nextInt(999));
         WebDriverUtil.select(driver, TRUCKTYPE, 3);
-        WebElement btnSubmit = driver.findElement(By.xpath(SUBMIT));
-        ((JavascriptExecutor) driver).executeScript("arguments[0].click()", btnSubmit);
-        WebElement btnUpdate = driver.findElement(By.xpath(UPDATE));
-        ((JavascriptExecutor) driver).executeScript("arguments[0].click()", btnUpdate);
-        Assert.assertTrue(ObjectUtils.isNotEmpty(btnUpdate));
+        WebDriverUtil.waitAndClick(driver, SUBMIT, Duration.ofSeconds(5000));
+        WebDriverUtil.pausetest(2000);
+        driver.findElement(By.xpath(SERIALNUMBER)).sendKeys("4564567" + new Random().nextInt(999999999));
+        WebDriverUtil.action(driver, VINLOOKUP);
+        WebDriverUtil.pausetest(2000);
+        WebDriverUtil.action(driver, UPDATE);
+        Assert.assertTrue(ObjectUtils.isNotEmpty(UPDATE));
     }
 }
