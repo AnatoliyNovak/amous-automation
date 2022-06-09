@@ -22,7 +22,7 @@ public class CreateTruck {
     public final String SERIALNUMBER = "//*[@id=\"app-container\"]/div/div/div/div[2]/div/div[3]/form/section[1]/div[5]/input";
     public final String VINLOOKUP = "//*[@id=\"app-container\"]/div/div/div/div[2]/div/div[3]/form/section[1]/div[5]/label/button";
     public final String UPDATE = "//*[@id=\"app-container\"]/div/div/div/div[2]/div/div[3]/form/div/div[2]/button[2]";
-
+    public final String DISPATCHBORD = "//*[@id=\"app-container\"]/div/div/div/div[1]/div/div[3]/div[3]/div[4]";
     public void createTruck(ChromeDriver driver) {
         WebElement fleetDriverPage = driver.findElement(By.xpath(FLEETDRIVERPAGE));
         ((JavascriptExecutor) driver).executeScript("arguments[0].click()", fleetDriverPage);
@@ -37,8 +37,12 @@ public class CreateTruck {
         WebDriverUtil.pausetest(2000);
         driver.findElement(By.xpath(SERIALNUMBER)).sendKeys("4564567" + new Random().nextInt(999999999));
         WebDriverUtil.action(driver, VINLOOKUP);
-        WebDriverUtil.pausetest(2000);
+        WebDriverUtil.pausetest(3000);
         WebDriverUtil.action(driver, UPDATE);
-        Assert.assertTrue(ObjectUtils.isNotEmpty(UPDATE));
+        WebElement dispatchBord = driver.findElement(By.xpath(DISPATCHBORD));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click()", dispatchBord);
+        Assert.assertTrue(ObjectUtils.isNotEmpty(DISPATCHBORD));
+//        Assert.assertTrue(dispatchBord.isDisplayed());
+
     }
 }

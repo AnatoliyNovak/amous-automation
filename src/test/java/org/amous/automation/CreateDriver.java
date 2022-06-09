@@ -37,8 +37,7 @@ public class CreateDriver {
         ((JavascriptExecutor) driver).executeScript("arguments[0].click()", treeDots);
         WebElement addDriver = driver.findElement(By.xpath(ADDDRIVER));
         ((JavascriptExecutor) driver).executeScript("arguments[0].click()", addDriver);
-        WebElement newAddDriver = driver.findElement(By.xpath(ADDNEWDRIVER));
-        ((JavascriptExecutor) driver).executeScript("arguments[0].click()", newAddDriver);
+        WebDriverUtil.action(driver, ADDNEWDRIVER);
         driver.findElement(By.xpath(FIRSTNAME)).sendKeys("Driver" + new Random().nextInt(9999));
         driver.findElement(By.xpath(LASTNAME)).sendKeys("Automation" + new Random().nextInt(9999));
         driver.findElement(By.xpath(LOGINID)).sendKeys("LoginId" + new Random().nextInt(9999));
@@ -49,13 +48,12 @@ public class CreateDriver {
                 .click()
                 .sendKeys("Driver\n")
                 .perform();
+        WebDriverUtil.pausetest(1000);
+        WebDriverUtil.action(driver, SUBMIT);
+        WebDriverUtil.action(driver, DRIVERTYPE);
         WebDriverUtil.pausetest(2000);
-        WebElement btnSubmit = driver.findElement(By.xpath(SUBMIT));
-        ((JavascriptExecutor) driver).executeScript("arguments[0].click()", btnSubmit);
-        WebDriverUtil.waitAndClick(driver, DRIVERTYPE, Duration.ofSeconds(3000));
         WebDriverUtil.select(driver, DRIVERTYPE, 3);
-        WebElement btnSave = driver.findElement(By.xpath(SAVE));
-        ((JavascriptExecutor) driver).executeScript("arguments[0].click()", btnSave);
-        Assert.assertTrue(ObjectUtils.isNotEmpty(btnSave));
+        WebDriverUtil.action(driver, SAVE);
+        Assert.assertTrue(ObjectUtils.isNotEmpty(SAVE));
     }
 }

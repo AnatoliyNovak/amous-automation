@@ -11,8 +11,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 
-
-
 public class WebDriverUtil {
 
 
@@ -35,6 +33,7 @@ public class WebDriverUtil {
                 .click(clickable)
                 .perform();
     }
+
     public static void pausetest(long sleeptime) {
         try {
             Thread.sleep(sleeptime);
