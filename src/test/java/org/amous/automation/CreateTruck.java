@@ -23,14 +23,14 @@ public class CreateTruck {
     public final String VINLOOKUP = "//*[@id=\"app-container\"]/div/div/div/div[2]/div/div[3]/form/section[1]/div[5]/label/button";
     public final String UPDATE = "//*[@id=\"app-container\"]/div/div/div/div[2]/div/div[3]/form/div/div[2]/button[2]";
     public final String DISPATCHBORD = "//*[@id=\"app-container\"]/div/div/div/div[1]/div/div[3]/div[3]/div[4]";
+
     public void createTruck(ChromeDriver driver) {
         WebElement fleetDriverPage = driver.findElement(By.xpath(FLEETDRIVERPAGE));
         ((JavascriptExecutor) driver).executeScript("arguments[0].click()", fleetDriverPage);
         WebDriverUtil.wait(driver, TREEDOTS, Duration.ofSeconds(1000));
         WebElement treeDots = driver.findElement(By.xpath(TREEDOTS));
         ((JavascriptExecutor) driver).executeScript("arguments[0].click()", treeDots);
-        WebElement createNewTruck = driver.findElement(By.xpath(CREATENEWTRUCK));
-        ((JavascriptExecutor) driver).executeScript("arguments[0].click()", createNewTruck);
+        driver.findElement(By.xpath(CREATENEWTRUCK));
         driver.findElement(By.xpath(TRUCKID)).sendKeys("Truck_A" + new Random().nextInt(999));
         WebDriverUtil.select(driver, TRUCKTYPE, 3);
         WebDriverUtil.waitAndClick(driver, SUBMIT, Duration.ofSeconds(5000));
@@ -42,7 +42,5 @@ public class CreateTruck {
         WebElement dispatchBord = driver.findElement(By.xpath(DISPATCHBORD));
         ((JavascriptExecutor) driver).executeScript("arguments[0].click()", dispatchBord);
         Assert.assertTrue(ObjectUtils.isNotEmpty(DISPATCHBORD));
-//        Assert.assertTrue(dispatchBord.isDisplayed());
-
     }
 }

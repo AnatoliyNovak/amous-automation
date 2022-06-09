@@ -28,35 +28,35 @@ public class AmousListTest {
         loginPage.login(driver);
         Assert.assertTrue(ObjectUtils.isNotEmpty(loginPage));
     }
-//
-//    @Test(priority = 0, testName = "createOrder" )
-//    public void createOrderTest() {
-//        CreateOrder createOrder = new CreateOrder();
-//        createOrder.createOrder(driver);
-//    }
-//
-//    @Test(priority = 2 , testName = "createDriver")
-//    public void createDriverTest() {
-//        CreateDriver createDriver = new CreateDriver();
-//        createDriver.createDriver(driver);
-//
-//    }
-//
-//    @Test(priority = 1, testName = "createTruck" )
-//    public void createTruckTest() {
-//        CreateTruck createTruck = new CreateTruck();
-//        createTruck.createTruck(driver);
-//
-//    }
-    @Test(priority = 3, testName = "createTrailer")
+
+        @Test(priority = 0, testName = "createOrder" )
+    public void createOrderTest() {
+        CreateOrder createOrder = new CreateOrder();
+        createOrder.createOrder(driver);
+    }
+
+    @Test(priority = 3 , testName = "createDriver")
+    public void createDriverTest() {
+        CreateDriver createDriver = new CreateDriver();
+        createDriver.createDriver(driver);
+
+    }
+
+    @Test(priority = 1, testName = "createTruck" )
+    public void createTruckTest() {
+        CreateTruck createTruck = new CreateTruck();
+        createTruck.createTruck(driver);
+
+    }
+    @Test(priority = 2, testName = "createTrailer")
     public void createTrailer() {
         CreateTrailer createTrailer = new CreateTrailer();
         createTrailer.createTrailer(driver);
     }
-
-    @AfterClass
-    public static void afterTests() {
-        driver.quit();
-    }
+//
+//    @AfterClass
+//    public static void afterTests() {
+//       driver.quit();
+//    }
 
 }

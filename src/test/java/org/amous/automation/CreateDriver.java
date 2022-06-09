@@ -42,7 +42,7 @@ public class CreateDriver {
         driver.findElement(By.xpath(LASTNAME)).sendKeys("Automation" + new Random().nextInt(9999));
         driver.findElement(By.xpath(LOGINID)).sendKeys("LoginId" + new Random().nextInt(9999));
         driver.findElement(By.xpath(PASSWORD)).sendKeys("1234");
-        driver.findElement(By.xpath(EMAIL)).sendKeys("emaol" + new Random().nextInt(200) + "@gmail.com");
+        driver.findElement(By.xpath(EMAIL)).sendKeys("email" + new Random().nextInt(999) + "@gmail.com");
         WebElement selectCustomerClick = driver.findElement(By.xpath(SELECTPERMISSIONS));
         new Actions(driver).moveToElement(selectCustomerClick)
                 .click()
