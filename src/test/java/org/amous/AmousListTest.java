@@ -6,9 +6,7 @@ import org.openqa.selenium.Dimension;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 public class AmousListTest {
 
@@ -29,34 +27,31 @@ public class AmousListTest {
         Assert.assertTrue(ObjectUtils.isNotEmpty(loginPage));
     }
 
-        @Test(priority = 0, testName = "createOrder" )
+    @Test(priority = 0, testName = "createOrder")
     public void createOrderTest() {
         CreateOrder createOrder = new CreateOrder();
         createOrder.createOrder(driver);
+
     }
 
-    @Test(priority = 3 , testName = "createDriver")
+    @Test(priority = 1, testName = "createDriver")
     public void createDriverTest() {
         CreateDriver createDriver = new CreateDriver();
         createDriver.createDriver(driver);
 
     }
 
-    @Test(priority = 1, testName = "createTruck" )
+    @Test(priority = 2, testName = "createTruck")
     public void createTruckTest() {
         CreateTruck createTruck = new CreateTruck();
         createTruck.createTruck(driver);
 
     }
-    @Test(priority = 2, testName = "createTrailer")
+
+    @Test(priority = 3, testName = "createTrailer")
     public void createTrailer() {
         CreateTrailer createTrailer = new CreateTrailer();
         createTrailer.createTrailer(driver);
     }
-//
-//    @AfterClass
-//    public static void afterTests() {
-//       driver.quit();
-//    }
 
 }

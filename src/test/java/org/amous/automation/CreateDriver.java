@@ -1,5 +1,6 @@
 package org.amous.automation;
 
+import org.amous.constant.AmousXpathKeys;
 import org.amous.utils.WebDriverUtil;
 import org.apache.commons.lang3.ObjectUtils;
 import org.openqa.selenium.By;
@@ -12,48 +13,40 @@ import org.testng.Assert;
 import java.time.Duration;
 import java.util.Random;
 
-public class CreateDriver {
+import static org.amous.constant.AmousXpathKeys.CREATE_DRIVER.*;
 
-    public final String FLEETDRIVERPAGE = "//*[@id=\"app-container\"]/div/div/div/div[1]/div/div[3]/div[3]/div[14]/div[2]";
-    public final String TREEDOTS = "/html/body/div[@id='amous-frontend-app']/div[@id='app-container']/div[@class='css-RootWrapper-o71dww3 css-1urznz1']/div/div/div[@class='css-PageWrapper-o71dww5 css-ListWrapper-o71dww6 css-5qp2sn']/div/div[@class='css-DriverWrapper-jddpo87 css-cz52ig']/div[@class='css-Wrapper-ikgouz0 css-17jic38']/div[@class='css-Box-17642400 css-Flex-17642401 css-AbsoluteBox-17642406 css-6cb7bf']/div[@class='css-PageActionsUI-1twaczk0 css-jnnt11']";
-    public final String ADDDRIVER = "/html/body/div[@id='amous-frontend-app']/div[@id='app-container']/div[@class='css-RootWrapper-o71dww3 css-1urznz1']/div/div/div[@class='css-PageWrapper-o71dww5 css-ListWrapper-o71dww6 css-5qp2sn']/div/div[@class='css-DriverWrapper-jddpo87 css-cz52ig']/div[@class='css-Wrapper-ikgouz0 css-17jic38']/div[@class='css-Box-17642400 css-Flex-17642401 css-AbsoluteBox-17642406 css-6cb7bf']/div[@class='css-PageActionsUI-1twaczk0 css-jnnt11']/div[@class='css-Box-17642400 css-Flex-17642401 css-AbsoluteBox-17642406 css-107g36p']/div[@class='css-Box-17642400 css-Flex-17642401 css-92798z']/div[@class='css-Wrapper-ikgouz0 css-17jic38'][2]/div[@class='css-Wrapper-1twaczk1 css-uf7rbo']";
-    public final String ADDNEWDRIVER = "//*[@id=\"app-container\"]/div/div/div/div[1]/div[2]/div";
-    public final String FIRSTNAME = "//*[@id=\"firstName\"]";
-    public final String LASTNAME = "//*[@id=\"lastName\"]";
-    public final String LOGINID = "//*[@id=\"loginId\"]";
-    public final String PASSWORD = "//*[@id=\"password\"]";
-    public final String EMAIL = "//*[@id=\"email\"]";
-    public final String SELECTPERMISSIONS = "//*[@id=\"app-container\"]/div/div/div/div[1]/div[2]/div/div[2]/div[2]/form/section/div[6]/div[2]/div";
-    public final String SUBMIT = "//*[@id=\"app-container\"]/div/div/div/div[1]/div[2]/div/div[2]/div[2]/form/div/button[2]";
-    public final String DRIVERTYPE = "//*[@id=\"app-container\"]/div/div/div/div[2]/div/div[3]/form/section[1]/div[13]/div/select";
-    public final String SAVE = "/html/body/div[@id='amous-frontend-app']/div[@id='app-container']/div[@class='css-RootWrapper-o71dww3 css-1urznz1']/div/div/div[@class='css-PageWrapper-o71dww5 css-ListWrapper-o71dww6 css-5qp2sn']/div[@class='css-DriverWrapper-jddpo87 css-EditDriverWrapper-jddpo88 css-ern2f']/div[@class='css-TabFormWrapper-7dl7yd6 css-14mesnc']/form[@class='css-Form-7dl7yd0 css-b88fp5']/div[@class='css-Box-17642400 css-Flex-17642401 css-qnza94']/div[@class='css-Box-17642400 css-cx3vhc'][2]/button[@class='css-Button-pmfjy10 css-FormSaveButton-pmfjy17 css-iv67yt']";
+public class CreateDriver {
 
     public void createDriver(ChromeDriver driver) {
 
-        WebElement fleetDriverPage = driver.findElement(By.xpath(FLEETDRIVERPAGE));
+        WebElement fleetDriverPage = driver.findElement(By.xpath(AmousXpathKeys.CREATE_DRIVER.FLEET_DRIVER_PAGE));
         ((JavascriptExecutor) driver).executeScript("arguments[0].click()", fleetDriverPage);
         WebDriverUtil.wait(driver, TREEDOTS, Duration.ofSeconds(1000));
         WebElement treeDots = driver.findElement(By.xpath(TREEDOTS));
         ((JavascriptExecutor) driver).executeScript("arguments[0].click()", treeDots);
-        WebElement addDriver = driver.findElement(By.xpath(ADDDRIVER));
+        WebElement addDriver = driver.findElement(By.xpath(ADD_DRIVER));
         ((JavascriptExecutor) driver).executeScript("arguments[0].click()", addDriver);
-        WebDriverUtil.action(driver, ADDNEWDRIVER);
-        driver.findElement(By.xpath(FIRSTNAME)).sendKeys("Driver" + new Random().nextInt(9999));
-        driver.findElement(By.xpath(LASTNAME)).sendKeys("Automation" + new Random().nextInt(9999));
-        driver.findElement(By.xpath(LOGINID)).sendKeys("LoginId" + new Random().nextInt(9999));
+        WebDriverUtil.action(driver, ADD_NEW_DRIVER);
+        driver.findElement(By.xpath(FIRST_NAME)).sendKeys("Driver" + new Random().nextInt(9999));
+        driver.findElement(By.xpath(LAST_NAME)).sendKeys("Automation" + new Random().nextInt(9999));
+        driver.findElement(By.xpath(LOGIN_ID)).sendKeys("LoginId" + new Random().nextInt(9999));
         driver.findElement(By.xpath(PASSWORD)).sendKeys("1234");
-        driver.findElement(By.xpath(EMAIL)).sendKeys("email" + new Random().nextInt(999) + "@gmail.com");
-        WebElement selectCustomerClick = driver.findElement(By.xpath(SELECTPERMISSIONS));
+        driver.findElement(By.xpath(EMAIL)).sendKeys("emaol" + new Random().nextInt(999) + "@gmail.com");
+        WebElement selectCustomerClick = driver.findElement(By.xpath(SELECT_PERMISSIONS));
         new Actions(driver).moveToElement(selectCustomerClick)
                 .click()
                 .sendKeys("Driver\n")
                 .perform();
         WebDriverUtil.pausetest(1000);
         WebDriverUtil.action(driver, SUBMIT);
-        WebDriverUtil.action(driver, DRIVERTYPE);
+        WebDriverUtil.action(driver, DRIVER_TYPE);
         WebDriverUtil.pausetest(2000);
-        WebDriverUtil.select(driver, DRIVERTYPE, 3);
+        WebDriverUtil.select(driver, DRIVER_TYPE, 3);
         WebDriverUtil.action(driver, SAVE);
         Assert.assertTrue(ObjectUtils.isNotEmpty(SAVE));
+        WebElement dispatchBord = driver.findElement(By.xpath(DISPATCH_BORD));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click()", dispatchBord);
+        Assert.assertTrue(ObjectUtils.isNotEmpty(DISPATCH_BORD));
+        driver.quit();
     }
 }
