@@ -10,6 +10,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 
 import java.time.Duration;
+import java.util.Random;
 
 import static org.amous.constant.AmousXpathKeys.CREATE_ORDER.*;
 
@@ -41,7 +42,7 @@ public class CreateOrder {
         WebElement selectOrderType = driver.findElement(By.xpath(ORDER_TYPE));
         new Actions(driver).moveToElement(selectOrderType)
                 .click()
-                .sendKeys("Variant\n")
+                .sendKeys("Variant" + new Random().nextInt(8) + "\n")
                 .perform();
         WebDriverUtil.pausetest(2000);
         WebDriverUtil.action(driver, PRICEING);
@@ -57,7 +58,7 @@ public class CreateOrder {
         driver.findElement(By.xpath(CUSTOMER_CONTACT_EMAIL)).sendKeys("ContactName@YEP.com");
         driver.findElement(By.xpath(CUSTOMER_COMMENTARS)).sendKeys("I am waiting for trip pricing");
         WebDriverUtil.action(driver, SUBMIT);
-        WebDriverUtil.pausetest(3000);
+        WebDriverUtil.pausetest(4000);
         WebElement dispatchBord = driver.findElement(By.xpath(DISPATCH_BOARD));
         ((JavascriptExecutor) driver).executeScript("arguments[0].click()", dispatchBord);
         Assert.assertTrue(ObjectUtils.isNotEmpty(DISPATCH_BOARD));

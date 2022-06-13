@@ -6,6 +6,7 @@ import org.openqa.selenium.Dimension;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
+
 import org.testng.annotations.*;
 
 public class AmousListTest {
@@ -14,7 +15,7 @@ public class AmousListTest {
     public static final String HTTPS_AMOUS_TMS_CF_LOGIN_URL = "https://amoustms.cf/login";
     public static ChromeDriver driver;
 
-    @BeforeClass
+    @BeforeMethod
     public void loginAndSetUp() {
         System.setProperty("webdriver.chrome.driver", CHROME_DRIVER_PATH);
         ChromeOptions options = new ChromeOptions();
@@ -51,4 +52,10 @@ public class AmousListTest {
         createTrailer.createTrailer(driver);
     }
 
+    @AfterMethod ()
+    public void tearDown(){
+        if(driver != null){
+            driver.quit();
+        }
+    }
 }

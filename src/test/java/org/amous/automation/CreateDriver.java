@@ -30,7 +30,7 @@ public class CreateDriver {
         driver.findElement(By.xpath(LAST_NAME)).sendKeys("Automation" + new Random().nextInt(9999));
         driver.findElement(By.xpath(LOGIN_ID)).sendKeys("LoginId" + new Random().nextInt(9999));
         driver.findElement(By.xpath(PASSWORD)).sendKeys("1234");
-        driver.findElement(By.xpath(EMAIL)).sendKeys("emaol" + new Random().nextInt(999) + "@gmail.com");
+        driver.findElement(By.xpath(EMAIL)).sendKeys("emaol" + new Random().nextInt(9999) + "@gmail.com");
         WebElement selectCustomerClick = driver.findElement(By.xpath(SELECT_PERMISSIONS));
         new Actions(driver).moveToElement(selectCustomerClick)
                 .click()
@@ -42,10 +42,10 @@ public class CreateDriver {
         WebDriverUtil.pausetest(2000);
         WebDriverUtil.select(driver, DRIVER_TYPE, 3);
         WebDriverUtil.action(driver, SAVE);
-        WebDriverUtil.pausetest(2000);
         Assert.assertTrue(ObjectUtils.isNotEmpty(SAVE));
+        WebDriverUtil.pausetest(4000);
         WebElement dispatchBord = driver.findElement(By.xpath(DISPATCH_BORD));
         ((JavascriptExecutor) driver).executeScript("arguments[0].click()", dispatchBord);
         Assert.assertTrue(ObjectUtils.isNotEmpty(DISPATCH_BORD));
-       }
+    }
 }

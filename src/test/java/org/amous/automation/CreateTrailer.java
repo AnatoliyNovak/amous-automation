@@ -20,8 +20,8 @@ public class CreateTrailer {
     public void createTrailer(ChromeDriver driver) {
         WebElement fleetTreilerPage = driver.findElement(By.xpath(FLEET_DRIVER_PAGE));
         ((JavascriptExecutor) driver).executeScript("arguments[0].click()", fleetTreilerPage);
-        WebDriverUtil.wait(driver, TREEDOTS, Duration.ofSeconds(1000));
-        WebElement treeDots = driver.findElement(By.xpath(TREEDOTS));
+        WebDriverUtil.wait(driver, TREE_DOTS, Duration.ofSeconds(1000));
+        WebElement treeDots = driver.findElement(By.xpath(TREE_DOTS));
         ((JavascriptExecutor) driver).executeScript("arguments[0].click()", treeDots);
         WebElement createNewTreiler = driver.findElement(By.xpath(CREATE_NEW_TREILER));
         ((JavascriptExecutor) driver).executeScript("arguments[0].click()", createNewTreiler);
@@ -43,7 +43,7 @@ public class CreateTrailer {
         WebDriverUtil.action(driver, VIN_LOOK_UP);
         WebDriverUtil.pausetest(3000);
         WebDriverUtil.action(driver, UPDATE);
-        WebDriverUtil.pausetest(3000);
+        WebDriverUtil.pausetest(4000);
         WebElement dispatchBord = driver.findElement(By.xpath(DISPATCH_BORD));
         ((JavascriptExecutor) driver).executeScript("arguments[0].click()", dispatchBord);
         Assert.assertTrue(ObjectUtils.isNotEmpty(DISPATCH_BORD));
