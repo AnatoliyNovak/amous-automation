@@ -10,7 +10,9 @@ import org.testng.Assert;
 
 import java.time.Duration;
 import java.util.Random;
+
 import static org.amous.constant.AmousXpathKeys.CREATE_TRUCK.*;
+
 public class CreateTruck {
 
 
@@ -32,6 +34,5 @@ public class CreateTruck {
         WebElement dispatchBord = driver.findElement(By.xpath(DISPATCH_BORD));
         ((JavascriptExecutor) driver).executeScript("arguments[0].click()", dispatchBord);
         Assert.assertTrue(ObjectUtils.isNotEmpty(DISPATCH_BORD));
-        driver.quit();
     }
 }

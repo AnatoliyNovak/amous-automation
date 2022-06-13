@@ -18,11 +18,10 @@ import static org.amous.constant.AmousXpathKeys.CREATE_DRIVER.*;
 public class CreateDriver {
 
     public void createDriver(ChromeDriver driver) {
-
         WebElement fleetDriverPage = driver.findElement(By.xpath(AmousXpathKeys.CREATE_DRIVER.FLEET_DRIVER_PAGE));
         ((JavascriptExecutor) driver).executeScript("arguments[0].click()", fleetDriverPage);
-        WebDriverUtil.wait(driver, TREEDOTS, Duration.ofSeconds(1000));
-        WebElement treeDots = driver.findElement(By.xpath(TREEDOTS));
+        WebDriverUtil.wait(driver, TREE_DOTS, Duration.ofSeconds(1000));
+        WebElement treeDots = driver.findElement(By.xpath(TREE_DOTS));
         ((JavascriptExecutor) driver).executeScript("arguments[0].click()", treeDots);
         WebElement addDriver = driver.findElement(By.xpath(ADD_DRIVER));
         ((JavascriptExecutor) driver).executeScript("arguments[0].click()", addDriver);
@@ -43,10 +42,10 @@ public class CreateDriver {
         WebDriverUtil.pausetest(2000);
         WebDriverUtil.select(driver, DRIVER_TYPE, 3);
         WebDriverUtil.action(driver, SAVE);
+        WebDriverUtil.pausetest(2000);
         Assert.assertTrue(ObjectUtils.isNotEmpty(SAVE));
         WebElement dispatchBord = driver.findElement(By.xpath(DISPATCH_BORD));
         ((JavascriptExecutor) driver).executeScript("arguments[0].click()", dispatchBord);
         Assert.assertTrue(ObjectUtils.isNotEmpty(DISPATCH_BORD));
-        driver.quit();
-    }
+       }
 }

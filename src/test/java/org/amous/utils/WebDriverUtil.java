@@ -10,8 +10,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-
-
 public class WebDriverUtil {
 
 
@@ -39,8 +37,6 @@ public class WebDriverUtil {
         try {
             Thread.sleep(sleeptime);
         } catch (InterruptedException ex) {
-
         }
-
     }
 }

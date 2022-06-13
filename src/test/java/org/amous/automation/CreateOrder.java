@@ -13,12 +13,9 @@ import java.time.Duration;
 
 import static org.amous.constant.AmousXpathKeys.CREATE_ORDER.*;
 
-
 public class CreateOrder {
 
-
     public void createOrder(ChromeDriver driver) {
-
         WebElement createOrder = driver.findElement(By.xpath(CREATE_ORDER_CLICK));
         ((JavascriptExecutor) driver).executeScript("arguments[0].click()", createOrder);
         WebDriverUtil.wait(driver, SELECT_CUSTOMER, Duration.ofSeconds(1000));
@@ -27,7 +24,7 @@ public class CreateOrder {
                 .click()
                 .sendKeys("Warner Bros\n")
                 .perform();
-        WebDriverUtil.action(driver, BILLTO);
+        WebDriverUtil.action(driver, BILL_TO);
         WebDriverUtil.waitAndClick(driver, PICKUP_PAGE, Duration.ofSeconds(9999999));
         WebDriverUtil.action(driver, PICKUP);
         driver.findElement(By.xpath(ITEMSID)).sendKeys("AutomationBox");
@@ -37,14 +34,14 @@ public class CreateOrder {
         WebDriverUtil.select(driver, FREIGHT_CLASS, 3);
         WebElement drop = driver.findElement(By.xpath(DROP));
         ((JavascriptExecutor) driver).executeScript("arguments[0].click()", drop);
-        WebElement additionalInfo = driver.findElement(By.xpath(ADDITIONALINFO));
+        WebElement additionalInfo = driver.findElement(By.xpath(ADDITIONAL_INFO));
         ((JavascriptExecutor) driver).executeScript("arguments[0].click()", additionalInfo);
         driver.findElement(By.xpath(SPECIAL_INSTRUCTIONS)).sendKeys("This is my first automation test. Don't judge too hard");
         driver.findElement(By.xpath(REFERENCES)).sendKeys("777");
-        WebElement selectOrderType = driver.findElement(By.xpath(ORDERTYPE));
+        WebElement selectOrderType = driver.findElement(By.xpath(ORDER_TYPE));
         new Actions(driver).moveToElement(selectOrderType)
                 .click()
-                .sendKeys("Variant\n" )
+                .sendKeys("Variant\n")
                 .perform();
         WebDriverUtil.pausetest(2000);
         WebDriverUtil.action(driver, PRICEING);
@@ -61,10 +58,9 @@ public class CreateOrder {
         driver.findElement(By.xpath(CUSTOMER_COMMENTARS)).sendKeys("I am waiting for trip pricing");
         WebDriverUtil.action(driver, SUBMIT);
         WebDriverUtil.pausetest(3000);
-        WebElement dispatchBord = driver.findElement(By.xpath(DISPATCHBORD));
+        WebElement dispatchBord = driver.findElement(By.xpath(DISPATCH_BOARD));
         ((JavascriptExecutor) driver).executeScript("arguments[0].click()", dispatchBord);
-        Assert.assertTrue(ObjectUtils.isNotEmpty(DISPATCHBORD));
-        driver.quit();
+        Assert.assertTrue(ObjectUtils.isNotEmpty(DISPATCH_BOARD));
     }
 
 }

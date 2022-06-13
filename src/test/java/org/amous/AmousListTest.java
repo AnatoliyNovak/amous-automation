@@ -27,25 +27,22 @@ public class AmousListTest {
         Assert.assertTrue(ObjectUtils.isNotEmpty(loginPage));
     }
 
-    @Test(priority = 0, testName = "createOrder")
+    @Test(priority = 5, testName = "createOrder")
     public void createOrderTest() {
         CreateOrder createOrder = new CreateOrder();
         createOrder.createOrder(driver);
-
     }
 
     @Test(priority = 1, testName = "createDriver")
     public void createDriverTest() {
         CreateDriver createDriver = new CreateDriver();
         createDriver.createDriver(driver);
-
     }
 
     @Test(priority = 2, testName = "createTruck")
     public void createTruckTest() {
         CreateTruck createTruck = new CreateTruck();
         createTruck.createTruck(driver);
-
     }
 
     @Test(priority = 3, testName = "createTrailer")
