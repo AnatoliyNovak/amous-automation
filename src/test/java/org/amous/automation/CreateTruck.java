@@ -28,6 +28,7 @@ public class CreateTruck {
         ((JavascriptExecutor) driver).executeScript("arguments[0].click()", createNewTruck);
         WebDriverUtil.pausetest(2000);
         driver.findElement(By.xpath(TRUCK_ID)).sendKeys("Truck_A" + new Random().nextInt(9999));
+        WebDriverUtil.pausetest(2000);
         Select dropdown = new Select(driver.findElement(By.xpath(TRUCK_TYPE)));
         List<WebElement> dd = dropdown.getOptions();
         int index = 0;

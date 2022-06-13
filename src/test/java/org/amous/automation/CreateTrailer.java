@@ -27,6 +27,7 @@ public class CreateTrailer {
         ((JavascriptExecutor) driver).executeScript("arguments[0].click()", createNewTreiler);
         driver.findElement(By.xpath(ADD_NEW_TRAILER));
         driver.findElement(By.xpath(TREILER_ID)).sendKeys("Treiler_A" + new Random().nextInt(999));
+        WebDriverUtil.pausetest(2000);
         Select dropdown = new Select(driver.findElement(By.xpath(TREILER_TYPE)));
         List<WebElement> dd = dropdown.getOptions();
         int index = 0;
