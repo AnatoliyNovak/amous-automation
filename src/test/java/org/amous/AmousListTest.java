@@ -51,6 +51,11 @@ public class AmousListTest {
         CreateTrailer createTrailer = new CreateTrailer();
         createTrailer.createTrailer(driver);
     }
+    @Test(priority = 4, testName = "createCarrier")
+    public void createCarrier() {
+       CreateCarrier createCarrier = new CreateCarrier();
+      createCarrier.createCarrier(driver);
+   }
 
     @AfterMethod ()
     public void tearDown(){

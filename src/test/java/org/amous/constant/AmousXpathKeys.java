@@ -1,7 +1,7 @@
 package org.amous.constant;
 
 public final class AmousXpathKeys {
-    public static final class CREATE_ORDER{
+    public static final class CREATE_ORDER {
         public static final String CREATE_ORDER_CLICK = "/html/body/div/div/div/div/div/div[1]/div/div[1]/div[1]/div[3]/div";
         public static final String PICKUP = "//*[@id=\"app-container\"]/div/div/div/div[2]/div/div[1]/div[2]/div[1]/form/div[1]/div[1]/div[2]";
         public static final String PICKUP_PAGE = "//*[@id=\"app-container\"]/div/div/div/div[2]/div";
@@ -30,6 +30,7 @@ public final class AmousXpathKeys {
         public static final String CURRENCY = "//*[@id=\"currency\"]";
         public static final String DISPATCH_BOARD = "//*[@id=\"app-container\"]/div/div/div/div[1]/div/div[3]/div[3]/div[4]";
     }
+
     public static final class CREATE_DRIVER {
         public static final String FLEET_DRIVER_PAGE = "//*[@id=\"app-container\"]/div/div/div/div[1]/div/div[3]/div[3]/div[14]/div[2]";
         public static final String TREE_DOTS = "/html/body/div[@id='amous-frontend-app']/div[@id='app-container']/div[@class='css-RootWrapper-o71dww3 css-1urznz1']/div/div/div[@class='css-PageWrapper-o71dww5 css-ListWrapper-o71dww6 css-5qp2sn']/div/div[@class='css-DriverWrapper-jddpo87 css-cz52ig']/div[@class='css-Wrapper-ikgouz0 css-17jic38']/div[@class='css-Box-17642400 css-Flex-17642401 css-AbsoluteBox-17642406 css-6cb7bf']/div[@class='css-PageActionsUI-1twaczk0 css-jnnt11']";
@@ -46,7 +47,8 @@ public final class AmousXpathKeys {
         public static final String SAVE = "/html/body/div[@id='amous-frontend-app']/div[@id='app-container']/div[@class='css-RootWrapper-o71dww3 css-1urznz1']/div/div/div[@class='css-PageWrapper-o71dww5 css-ListWrapper-o71dww6 css-5qp2sn']/div[@class='css-DriverWrapper-jddpo87 css-EditDriverWrapper-jddpo88 css-ern2f']/div[@class='css-TabFormWrapper-7dl7yd6 css-14mesnc']/form[@class='css-Form-7dl7yd0 css-b88fp5']/div[@class='css-Box-17642400 css-Flex-17642401 css-qnza94']/div[@class='css-Box-17642400 css-cx3vhc'][2]/button[@class='css-Button-pmfjy10 css-FormSaveButton-pmfjy17 css-iv67yt']";
         public static final String DISPATCH_BORD = "//*[@id=\"app-container\"]/div/div/div/div[1]/div/div[3]/div[3]/div[4]";
     }
-    public static final class CREATE_TRUCK{
+
+    public static final class CREATE_TRUCK {
         public static final String FLEET_DRIVERPAGE = "//*[@id=\"app-container\"]/div/div/div/div[1]/div/div[3]/div[3]/div[14]/div[3]";
         public static final String TREE_DOTS = "//*[@id=\"app-container\"]/div/div/div/div[2]/div/div/div[3]/div";
         public static final String CREATE_NEW_TRUCK = "/html/body/div[@id='amous-frontend-app']/div[@id='app-container']/div[@class='css-RootWrapper-o71dww3 css-1urznz1']/div/div/div[@class='css-PageWrapper-o71dww5 css-ListWrapper-o71dww6 css-5qp2sn']/div/div[@class='css-TruckWrapper-115gt690 css-cz52ig']/div[@class='css-Wrapper-ikgouz0 css-17jic38']/div[@class='css-Box-17642400 css-Flex-17642401 css-AbsoluteBox-17642406 css-6cb7bf']/div[@class='css-PageActionsUI-1twaczk0 css-jnnt11']/div[@class='css-Box-17642400 css-Flex-17642401 css-AbsoluteBox-17642406 css-107g36p']/div[@class='css-Box-17642400 css-Flex-17642401 css-92798z']/div[@class='css-Wrapper-ikgouz0 css-17jic38'][2]/div[@class='css-Wrapper-1twaczk1 css-uf7rbo']";
@@ -58,6 +60,7 @@ public final class AmousXpathKeys {
         public static final String UPDATE = "//*[@id=\"app-container\"]/div/div/div/div[2]/div/div[3]/form/div/div[2]/button[2]";
         public static final String DISPATCH_BORD = "//*[@id=\"app-container\"]/div/div/div/div[1]/div/div[3]/div[3]/div[4]";
     }
+
     public static final class CREATE_TRAILER {
         public static final String FLEET_DRIVER_PAGE = "//*[@id=\"app-container\"]/div/div/div/div[1]/div/div[1]/div[2]/div[1]/div[7]";
         public static final String TREE_DOTS = "//*[@id=\"app-container\"]/div/div/div/div[2]/div/div/div[3]/div";
@@ -70,5 +73,21 @@ public final class AmousXpathKeys {
         public static final String VIN_LOOK_UP = "//*[@id=\"app-container\"]/div/div/div/div[2]/div/div[2]/form/section[1]/div[5]/label/button";
         public static final String UPDATE = "//*[@id=\"app-container\"]/div/div/div/div[2]/div/div[2]/form/div/div[2]/button[2]";
         public static final String DISPATCH_BORD = "//*[@id=\"app-container\"]/div/div/div/div[1]/div/div[1]/div[1]/div[5]";
+    }
+
+    public static final class CREATE_CARRIER {
+        public static final String CARRIER_PAGE = "//*[@id=\"app-container\"]/div/div/div/div[1]/div/div[1]/div[2]/div[1]/div[5]";
+        public static final String TREE_DOTS = "//*[@id=\"app-container\"]/div/div/div/div[2]/div/div[3]/div";
+        public static final String CREATE_NEW_CARRIER = "/html/body/div[@id='amous-frontend-app']/div[@id='app-container']/div[@class='css-RootWrapper-o71dww3 css-1urznz1']/div/div/div[2]/div[@class='css-PageWrapper-o71dww5 css-ListWrapper-o71dww6 css-1pc3pyb']/div[@class='css-Wrapper-ikgouz0 css-17jic38']/div[@class='css-Box-17642400 css-Flex-17642401 css-AbsoluteBox-17642406 css-6cb7bf']/div[@class='css-PageActionsUI-1twaczk0 css-jnnt11']/div[@class='css-Box-17642400 css-Flex-17642401 css-AbsoluteBox-17642406 css-107g36p']/div[@class='css-Box-17642400 css-Flex-17642401 css-92798z']/div[@class='css-Wrapper-ikgouz0 css-17jic38'][2]/div[@class='css-Wrapper-1twaczk1 css-uf7rbo']";
+        public static final String CARRIER_NAME = "//*[@id=\"name\"]";
+        public static final String USDOT_NUMBER = "//*[@id=\"usDotNumber\"]";
+        public static final String MC_NUMBER = "//*[@id=\"mcNumber\"]";
+        public static final String SUBMIT = "//*[@id=\"app-container\"]/div/div/div/div[1]/div[2]/div/div[2]/div[2]/div/form/div/div/button[2]";
+        public static final String CARRIER_INFO_PAGE = "//*[@id=\"app-container\"]/div/div/div/div[2]/form";
+//        public static final String TRANSPORTATION_MODE = "//*[@id=\"react-select-3--value\"]/div[2]/input";
+        public static final String EMAILS = "//*[@id=\"app-container\"]/div/div/div/div[2]/form/div/div[1]/section/div[19]/div/div/input";
+        public static final String PHONE_NUMBER = "//*[@id=\"app-container\"]/div/div/div/div[2]/form/div/div[1]/section/div[20]/div/div/div/input";
+        public static final String SAVE = "//*[@id=\"app-container\"]/div/div/div/div[2]/form/div/div[2]/div[2]/button[2]";
+        public static final String DISPATCH_BORD = "//*[@id=\"app-container\"]/div/div/div/div[1]/div/div[1]/div[1]/div[5]/div";
     }
 }

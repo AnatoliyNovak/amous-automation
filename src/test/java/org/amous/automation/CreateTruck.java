@@ -13,7 +13,6 @@ import java.time.Duration;
 import java.util.List;
 import java.util.Random;
 
-import static org.amous.constant.AmousXpathKeys.CREATE_TRAILER.TREILER_TYPE;
 import static org.amous.constant.AmousXpathKeys.CREATE_TRUCK.*;
 
 public class CreateTruck {
