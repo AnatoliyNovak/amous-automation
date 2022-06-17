@@ -41,9 +41,10 @@ public class CreateDriver {
         WebDriverUtil.action(driver, DRIVER_TYPE);
         WebDriverUtil.pausetest(2000);
         WebDriverUtil.select(driver, DRIVER_TYPE, 3);
+        WebDriverUtil.pausetest(2000);
         WebDriverUtil.action(driver, SAVE);
         Assert.assertTrue(ObjectUtils.isNotEmpty(SAVE));
-        WebDriverUtil.pausetest(4000);
+        WebDriverUtil.pausetest(2000);
         WebElement dispatchBord = driver.findElement(By.xpath(DISPATCH_BORD));
         ((JavascriptExecutor) driver).executeScript("arguments[0].click()", dispatchBord);
         Assert.assertTrue(ObjectUtils.isNotEmpty(DISPATCH_BORD));

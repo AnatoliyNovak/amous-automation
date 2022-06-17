@@ -44,7 +44,7 @@ public class CreateTruck {
             WebDriverUtil.action(driver, VIN_LOOK_UP);
             WebDriverUtil.pausetest(3000);
             WebDriverUtil.action(driver, UPDATE);
-            WebDriverUtil.pausetest(4000);
+            WebDriverUtil.pausetest(3000);
             WebElement dispatchBord = driver.findElement(By.xpath(DISPATCH_BORD));
             ((JavascriptExecutor) driver).executeScript("arguments[0].click()", dispatchBord);
             Assert.assertTrue(ObjectUtils.isNotEmpty(DISPATCH_BORD));

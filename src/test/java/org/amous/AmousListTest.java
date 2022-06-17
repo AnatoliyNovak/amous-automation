@@ -11,7 +11,7 @@ import org.testng.annotations.*;
 
 public class AmousListTest {
 
-    public static final String CHROME_DRIVER_PATH = "C:\\Drivers\\chromedriver.exe";
+    public static final String CHROME_DRIVER_PATH = "C:\\Program Files\\Google\\chromedriver.exe";
     public static final String HTTPS_AMOUS_TMS_CF_LOGIN_URL = "https://amoustms.cf/login";
     public static ChromeDriver driver;
 
